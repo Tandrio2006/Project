@@ -34,8 +34,8 @@ class CustomerController extends Controller
 
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                return '<a class="btn btnUpdateCustomer btn-sm btn-secondary ml-1" data-id="' . $row->id . '"><i class="fas fa-edit  text-white"></i></a>' .
-                    '<a class="btn btnDestroyCustomer btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
+                return '<a class="btn btnUpdateCustomer btn-sm btn-success ml-1" data-id="' . $row->id . '"><i class="fas fa-edit  text-white"></i></a>' .
+                    '<a class="btn btnDestroyCustomer btn-sm btn-secondary ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
             })
             ->rawColumns(['action'])
             ->make(true);
@@ -132,8 +132,8 @@ class CustomerController extends Controller
 
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                return '<a class="btn btnUpdateAdmin btn-sm btn-secondary" data-id="' . $row->id . '"><i class="fas fa-edit text-white"></i></a>' .
-                    '<a class="btn btnDestroyAdmin btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
+                return '<a class="btn btnUpdateAdmin btn-sm btn-success" data-id="' . $row->id . '"><i class="fas fa-edit text-white"></i></a>' .
+                    '<a class="btn btnDestroyAdmin btn-sm btn-secondary ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
             })
             ->rawColumns(['action'])
             ->make(true);

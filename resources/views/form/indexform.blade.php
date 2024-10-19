@@ -145,7 +145,7 @@
             <div class="mt-3">
                 <label for="NamaRek" class="form-label fw-bold">Nama Rekening</label>
                 <input type="text" class="form-control" id="NamaRek" placeholder="Masukkan Nama Rekening">
-                <<div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening
+                <div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening
             </div>
     </div>
     <div class="mt-3">

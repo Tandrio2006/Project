@@ -33,7 +33,6 @@ class AdminExport implements FromView, WithEvents
     {
         return [
             AfterSheet::class => function (AfterSheet $event) {
-
                 foreach (range('A', 'F') as $columnID) {
                     $event->sheet->getDelegate()->getColumnDimension($columnID)->setAutoSize(true);
                 }

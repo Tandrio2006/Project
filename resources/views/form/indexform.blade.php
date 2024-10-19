@@ -140,36 +140,36 @@
             <div class="mt-3">
                 <label for="Bank" class="form-label fw-bold">Bank</label>
                 <input type="text" class="form-control" id="Bank" placeholder="Masukkan Nama Bank">
-                <!-- <div id="BankError" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div> -->
+                <div id="BankError" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div>
             </div>
             <div class="mt-3">
                 <label for="NamaRek" class="form-label fw-bold">Nama Rekening</label>
                 <input type="text" class="form-control" id="NamaRek" placeholder="Masukkan Nama Rekening">
-                <!-- <div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening</div> -->
+                <<div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening
             </div>
-            <div class="mt-3">
-                <label for="NoRek" class="form-label fw-bold">No Rekening</label>
-                <input type="text" class="form-control" id="NoRek" placeholder="Masukkan No Rekening">
-                <!-- <div id="NoRekError" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div> -->
-            </div>
-            <div class="mt-3">
-                <div class="captcha">
-                    <span>{!! captcha_img('mini') !!}</span>
-                    <button type="button" class="btn btn-success reload" id="reload">
-                        &#x21bb;
-                    </button>
-                    <div class="form-group mb-3 mt-2">
-                        <input type="text" class="form-control" id="captcha" placeholder="Masukkan Captcha"
-                            name="captcha">
-                        <div id="CaptchaError" class="text-danger mt-1 d-none">Silahkan isi Captcha</div>
-                    </div>
-                </div>
-            </div>
-            <div class="row button mb-2 mt-3">
-                <button type="button" id="saveCaptcha" class="btn btn-success btn-block">Daftar</button>
-            </div>
-        </form>
     </div>
+    <div class="mt-3">
+        <label for="NoRek" class="form-label fw-bold">No Rekening</label>
+        <input type="text" class="form-control" id="NoRek" placeholder="Masukkan No Rekening">
+        <div id="NoRekError" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div>
+    </div>
+    <div class="mt-3">
+        <div class="captcha">
+            <span>{!! captcha_img('mini') !!}</span>
+            <button type="button" class="btn btn-success reload" id="reload">
+                &#x21bb;
+            </button>
+            <div class="form-group mb-3 mt-2">
+                <input type="text" class="form-control" id="captcha" placeholder="Masukkan Captcha" name="captcha">
+                <div id="CaptchaError" class="text-danger mt-1 d-none">Silahkan isi Captcha</div>
+            </div>
+        </div>
+    </div>
+    <div class="row button mb-2 mt-3">
+        <button type="button" id="saveCaptcha" class="btn btn-success btn-block">Daftar</button>
+    </div>
+    </form>
+</div>
 </div>
 @endsection
 
@@ -230,26 +230,26 @@
                 $('#WaError').addClass('d-none');
             }
 
-            // if (Bank === '') {
-            //     $('#BankError').removeClass('d-none');
-            //     isValid = false;
-            // } else {
-            //     $('#BankError').addClass('d-none');
-            // }
+            if (Bank === '') {
+                $('#BankError').removeClass('d-none');
+                isValid = false;
+            } else {
+                $('#BankError').addClass('d-none');
+            }
 
-            // if (NamaRek === '') {
-            //     $('#NamaRekError').removeClass('d-none');
-            //     isValid = false;
-            // } else {
-            //     $('#NamaRekError').addClass('d-none');
-            // }
+            if (NamaRek === '') {
+                $('#NamaRekError').removeClass('d-none');
+                isValid = false;
+            } else {
+                $('#NamaRekError').addClass('d-none');
+            }
 
-            // if (NoRek === '') {
-            //     $('#NoRekError').removeClass('d-none');
-            //     isValid = false;
-            // } else {
-            //     $('#NoRekError').addClass('d-none');
-            // }
+            if (NoRek === '') {
+                $('#NoRekError').removeClass('d-none');
+                isValid = false;
+            } else {
+                $('#NoRekError').addClass('d-none');
+            }
 
             if (captcha === '') {
                 $('#CaptchaError').removeClass('d-none');

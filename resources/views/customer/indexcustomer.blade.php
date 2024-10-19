@@ -8,18 +8,19 @@
   .custom-btn {
     background-color: #1abc9c !important;
     border-color: #1abc9c !important;
-}
-.custom-outline-btn {
-    color: #1abc9c; 
-    border-color: #1abc9c; 
-}
+  }
 
-.custom-outline-btn:hover,
-.custom-outline-btn:focus,
-.custom-outline-btn:active {
-    background-color: #1abc9c; 
-    color: white; 
-}
+  .custom-outline-btn {
+    color: #1abc9c;
+    border-color: #1abc9c;
+  }
+
+  .custom-outline-btn:hover,
+  .custom-outline-btn:focus,
+  .custom-outline-btn:active {
+    background-color: #1abc9c;
+    color: white;
+  }
 </style>
 
 <div class="container-fluid" id="container-wrapper">
@@ -84,7 +85,8 @@
           </div>
           <div class="mt-3">
             <label for="password">Password (New Password)</label>
-            <input type="password" class="form-control" id="passwordEdit" placeholder="Masukkan password (new password) " required>
+            <input type="password" class="form-control" id="passwordEdit"
+              placeholder="Masukkan password (new password) " required>
             <span id="passwordErrorEdit" class="text-danger d-none">Password must be at least 8 characters long</span>
           </div>
         </div>
@@ -126,17 +128,17 @@
           <div class="mt-3">
             <label for="Bank" class="form-label fw-bold">Bank</label>
             <input type="text" class="form-control" id="Bank" placeholder="Masukkan Nama Bank">
-            <!-- <div id="BankError" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div> -->
+            <div id="BankError" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div>
           </div>
           <div class="mt-3">
             <label for="NamaRek" class="form-label fw-bold">Nama Rekening</label>
             <input type="text" class="form-control" id="NamaRek" placeholder="Masukkan Nama Rekening">
-            <!-- <div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening</div> -->
+            <div id="NamaRekError" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening</div>
           </div>
           <div class="mt-3">
             <label for="NoRek" class="form-label fw-bold">No Rekening</label>
             <input type="text" class="form-control" id="NoRek" placeholder="Masukkan No Rekening">
-            <!-- <div id="NoRekError" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div> -->
+            <div id="NoRekError" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div>
           </div>
         </div>
         <div class="modal-footer">
@@ -177,17 +179,17 @@
           <div class="mt-3">
             <label for="BankEdit" class="form-label fw-bold">Bank</label>
             <input type="text" class="form-control" id="BankEdit" placeholder="Masukkan Nama Bank">
-            <!-- <div id="BankErrorEdit" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div> -->
+            <div id="BankErrorEdit" class="text-danger mt-1 d-none">Silahkan isi Nama Bank</div>
           </div>
           <div class="mt-3">
             <label for="NamaRekEdit" class="form-label fw-bold">Nama Rekening</label>
             <input type="text" class="form-control" id="NamaRekEdit" placeholder="Masukkan Nama Rekening">
-            <!-- <div id="NamaRekErrorEdit" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening</div> -->
+            <div id="NamaRekErrorEdit" class="text-danger mt-1 d-none">Silahkan isi Nama Rekening</div>
           </div>
           <div class="mt-3">
             <label for="NoRekEdit" class="form-label fw-bold">No Rekening</label>
             <input type="text" class="form-control" id="NoRekEdit" placeholder="Masukkan No Rekening">
-            <!-- <div id="NoRekErrorEdit" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div> -->
+            <div id="NoRekErrorEdit" class="text-danger mt-1 d-none">Silahkan isi No Rekening</div>
           </div>
         </div>
         <div class="modal-footer">
@@ -212,7 +214,8 @@
   </div>
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <a class="nav-links nav-link active" aria-current="page" href="#" data-tab="roleTab" style="color:#1abc9c">Customer</a>
+      <a class="nav-links nav-link active" aria-current="page" href="#" data-tab="roleTab"
+        style="color:#1abc9c">Customer</a>
     </li>
     <li class="nav-item">
       <a class="nav-links nav-link " href="#" data-tab="AksesTab" style="color:#1abc9c">Admin</a>
@@ -272,8 +275,8 @@
           <div class="card shadow" style="border: none; border-radius: 10px;">
             <div class="card-body">
               <div class="d-flex mb-2 mr-3 float-right">
-                <button type="button" class="btn custom-btn text-white" data-toggle="modal" data-target="#modalTambahAdmin"><span
-                    class="pr-2"><i class="fas fa-plus" ></i></span>Tambah
+                <button type="button" class="btn custom-btn text-white" data-toggle="modal"
+                  data-target="#modalTambahAdmin"><span class="pr-2"><i class="fas fa-plus"></i></span>Tambah
                   Admin</button>
               </div>
               <div class="d-flex mb-2 mr-3 float-left">
@@ -416,26 +419,26 @@
         $('#WaError').addClass('d-none');
       }
 
-      // if (Bank === '') {
-      //   $('#BankError').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#BankError').addClass('d-none');
-      // }
+      if (Bank === '') {
+        $('#BankError').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#BankError').addClass('d-none');
+      }
 
-      // if (NamaRek === '') {
-      //   $('#NamaRekError').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#NamaRekError').addClass('d-none');
-      // }
+      if (NamaRek === '') {
+        $('#NamaRekError').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#NamaRekError').addClass('d-none');
+      }
 
-      // if (NoRek === '') {
-      //   $('#NoRekError').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#NoRekError').addClass('d-none');
-      // }
+      if (NoRek === '') {
+        $('#NoRekError').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#NoRekError').addClass('d-none');
+      }
       if (isValid) {
         Swal.fire({
           title: 'Apakah Anda yakin?',
@@ -547,26 +550,26 @@
         $('#WaErrorEdit').addClass('d-none');
       }
 
-      // if (Bank === '') {
-      //   $('#BankErrorEdit').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#BankErrorEdit').addClass('d-none');
-      // }
+      if (Bank === '') {
+        $('#BankErrorEdit').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#BankErrorEdit').addClass('d-none');
+      }
 
-      // if (NamaRek === '') {
-      //   $('#NamaRekErrorEdit').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#NamaRekErrorEdit').addClass('d-none');
-      // }
+      if (NamaRek === '') {
+        $('#NamaRekErrorEdit').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#NamaRekErrorEdit').addClass('d-none');
+      }
 
-      // if (NoRek === '') {
-      //   $('#NoRekErrorEdit').removeClass('d-none');
-      //   isValid = false;
-      // } else {
-      //   $('#NoRekErrorEdit').addClass('d-none');
-      // }
+      if (NoRek === '') {
+        $('#NoRekErrorEdit').removeClass('d-none');
+        isValid = false;
+      } else {
+        $('#NoRekErrorEdit').addClass('d-none');
+      }
 
       if (isValid) {
         Swal.fire({

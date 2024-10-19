@@ -25,7 +25,7 @@ class CustomerExport implements FromView, WithEvents
             'id'
         ])
         ->orderBy('id', 'desc')
-        ->limit(100);
+        ->limit(10);
 
         $customer = $data->get();
 

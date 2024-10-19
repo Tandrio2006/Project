@@ -29,13 +29,13 @@ class CustomerController extends Controller
             'id'
         ])
             ->orderBy('id', 'desc')
-            ->limit(200)
+            ->limit(10)
             ->get();
 
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                return '<a class="btn btnUpdateCustomer btn-sm btn-secondary ml-1" data-id="' . $row->id . '"><i class="fas fa-edit"></i></a>' .
-                    '<a class="btn btnDestroyCustomer btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash"></i></a>' ;
+                return '<a class="btn btnUpdateCustomer btn-sm btn-secondary ml-1" data-id="' . $row->id . '"><i class="fas fa-edit  text-white"></i></a>' .
+                    '<a class="btn btnDestroyCustomer btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
             })
             ->rawColumns(['action'])
             ->make(true);
@@ -48,9 +48,9 @@ class CustomerController extends Controller
             'Username' => 'required|string|max:255',
             'Email' => 'required|string|email|max:255|unique:tbl_customer,Email',
             'Wa' => 'required|string|max:15',
-            'Bank' => 'nullable|string|max:255',
-            'NamaRek' => 'nullable|string|max:255',
-            'NoRek' => 'nullable|string|max:255',
+            'Bank' => 'required|string|max:255',
+            'NamaRek' => 'required|string|max:255',
+            'NoRek' => 'required|string|max:255',
         ]);
 
         try {
@@ -76,9 +76,9 @@ class CustomerController extends Controller
             'Username' => 'required|string|max:255',
             'Email' => 'required|string|email|max:255|unique:tbl_customer,Email,' . $id,
             'Wa' => 'required|string|max:15',
-           'Bank' => 'nullable|string|max:255',
-            'NamaRek' => 'nullable|string|max:255',
-            'NoRek' => 'nullable|string|max:255',
+           'Bank' => 'required|string|max:255',
+            'NamaRek' => 'required|string|max:255',
+            'NoRek' => 'required|string|max:255',
         ]);
 
         try {
@@ -127,13 +127,13 @@ class CustomerController extends Controller
             'id'
         ])
             ->orderBy('id', 'desc')
-            ->limit(100)
+            ->limit(10)
             ->get();
 
         return DataTables::of($data)
             ->addColumn('action', function ($row) {
-                return '<a class="btn btnUpdateAdmin btn-sm btn-secondary" data-id="' . $row->id . '"><i class="fas fa-edit"></i></a>' .
-                    '<a class="btn btnDestroyAdmin btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash"></i></a>' ;
+                return '<a class="btn btnUpdateAdmin btn-sm btn-secondary" data-id="' . $row->id . '"><i class="fas fa-edit text-white"></i></a>' .
+                    '<a class="btn btnDestroyAdmin btn-sm btn-danger ml-1" data-id="' . $row->id . '"><i class="fas fa-trash  text-white"></i></a>' ;
             })
             ->rawColumns(['action'])
             ->make(true);

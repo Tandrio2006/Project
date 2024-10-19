@@ -46,9 +46,9 @@ class FormController extends Controller
             'Username' => 'required|string|max:255',
             'Email' => 'required|string|email|max:255|unique:tbl_customer,Email',
             'Wa' => 'required|string|max:15',
-            'Bank' => 'nullable|string',
-            'NamaRek' => 'nullable|string',
-            'NoRek' => 'nullable|string',
+            'Bank' => 'required|string|max:255',
+            'NamaRek' => 'required|string|max:255',
+            'NoRek' => 'required|string|max:255',
         ];
 
         $validator = Validator::make($request->all(), $validate);

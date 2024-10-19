@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('Username');
             $table->string('Email');
             $table->string('Wa');
-            $table->string('Bank')->nullable();
-            $table->string('NamaRek')->nullable();
-            $table->string('NoRek')->nullable();
+            $table->string('Bank');
+            $table->string('NamaRek');
+            $table->string('NoRek');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });

@@ -22,5 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['web'])->group(function () {
     Route::get('/form/indexform', [FormController::class, 'index']);
     Route::post('/form/store',[FormController::class,'store']);
-    Route::get('/reload-captcha' , [FormController::class, 'reloadCaptcha']);
 });

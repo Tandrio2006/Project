@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admindata/exportadmin', [CustomerController::class, 'exportAdmin'])->name('ExportAdmin');
 
     //form
-    Route::get('/form/indexform', [FormController::class, 'index'])->name('form');
+    // Route::get('/form/indexform', [FormController::class, 'index'])->name('form');
     // Route::get('/reload-captcha' , [FormController::class, 'reloadCaptcha']);
     // Route::post('/form/store' , [FormController::class, 'addForm'])->name('addForm');
 

@@ -29,7 +29,7 @@ class CustomerController extends Controller
             'id'
         ])
             ->orderBy('id', 'desc')
-            ->limit(10)
+            ->limit(100)
             ->get();
 
         return DataTables::of($data)
@@ -127,7 +127,7 @@ class CustomerController extends Controller
             'id'
         ])
             ->orderBy('id', 'desc')
-            ->limit(10)
+            ->limit(100)
             ->get();
 
         return DataTables::of($data)

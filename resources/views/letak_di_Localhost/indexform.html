@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #1abc9c;
+        }
+
+        .wrapper {
+            max-width: 700px;
+            width: 100%;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper .title {
+            height: 120px;
+            background: #16a085;
+            border-radius: 5px 5px 0 0;
+            color: #fff;
+            font-size: 30px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper form {
+            padding: 25px 35px;
+        }
+
+        .wrapper form .mt-3 {
+            margin-top: 15px;
+        }
+
+        .wrapper form .mt-3 input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid lightgrey;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .wrapper form .button input {
+            margin-top: 20px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            background: #16a085;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .wrapper form .button input:hover {
+            background: #12876f;
+        }
+
+        #saveCaptcha {
+            background-color: #12876f;
+            color: white;
+            width: 100%;
+        }
+
+        .text-danger {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="title"><span>Daftar</span></div>
+        <form id="apiForm" method="POST" action="">
+            <div class="mt-3">
+                <label for="Username" class="form-label fw-bold">Username</label>
+                <input type="text" class="form-control" id="Username" placeholder="Masukkan Username">
+                <div id="UsernameError" class="text-danger">Silahkan isi Username</div>
+            </div>
+            <div class="mt-3">
+                <label for="Email" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Masukkan Email">
+                <div id="EmailError" class="text-danger">Silahkan isi Email yang valid</div>
+            </div>
+            <div class="mt-3">
+                <label for="Wa" class="form-label fw-bold">WhatsApp</label>
+                <input type="text" class="form-control" id="Wa" placeholder="Masukkan No WhatsApp">
+                <div id="WaError" class="text-danger">Silahkan isi No WhatsApp</div>
+            </div>
+            <div class="mt-3">
+                <label for="Bank" class="form-label fw-bold">Bank</label>
+                <input type="text" class="form-control" id="Bank" placeholder="Masukkan Nama Bank">
+                <div id="BankError" class="text-danger">Silahkan isi Nama Bank</div>
+            </div>
+            <div class="mt-3">
+                <label for="NamaRek" class="form-label fw-bold">Nama Rekening</label>
+                <input type="text" class="form-control" id="NamaRek" placeholder="Masukkan Nama Rekening">
+                <div id="NamaRekError" class="text-danger">Silahkan isi Nama Rekening</div>
+            </div>
+            <div class="mt-3">
+                <label for="NoRek" class="form-label fw-bold">No Rekening</label>
+                <input type="text" class="form-control" id="NoRek" placeholder="Masukkan No Rekening">
+                <div id="NoRekError" class="text-danger">Silahkan isi No Rekening</div>
+            </div>
+            <div class="mt-3">
+                <div class="g-recaptcha" data-sitekey="6LfXbmkqAAAAAMFfvDypJTSqm2n4QRNkQaDJItZ3"></div>
+                <div id="CaptchaError" class="text-danger">Silahkan verifikasi captcha</div>
+            </div>
+            <div class="row button mb-2 mt-3">
+                <button type="submit" id="saveCaptcha" class="btn btn-success btn-block">Daftar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $('#apiForm').on('submit', function (e) {
+            e.preventDefault();
+
+            var formData = {
+                Username: $('#Username').val(),
+                Email: $('#Email').val(),
+                Wa: $('#Wa').val(),
+                Bank: $('#Bank').val(),
+                NamaRek: $('#NamaRek').val(),
+                NoRek: $('#NoRek').val(),
+                captcha: grecaptcha.getResponse(),
+                _token: '{{ csrf_token() }}',
+            };
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var isValid = true;
+
+            $('.text-danger').hide(); 
+
+            if (!formData.Username) {
+                $('#UsernameError').show();
+                isValid = false;
+            }
+
+            if (!formData.Email) {
+                $('#EmailError').show();
+                isValid = false;
+            } else if (!emailRegex.test(formData.Email)) {
+                $('#EmailError').text('Format Email tidak valid').show();
+                isValid = false;
+            } else if (!formData.Email.endsWith('@gmail.com')) {
+                $('#EmailError').text('Email harus menggunakan @gmail.com').show();
+                isValid = false;
+            }
+
+            if (!formData.Wa) {
+                $('#WaError').show();
+                isValid = false;
+            }
+
+            if (!formData.Bank) {
+                $('#BankError').show();
+                isValid = false;
+            }
+
+            if (!formData.NamaRek) {
+                $('#NamaRekError').show();
+                isValid = false;
+            }
+
+            if (!formData.NoRek) {
+                $('#NoRekError').show();
+                isValid = false;
+            }
+
+            if (!formData.captcha) {
+                $('#CaptchaError').show(); 
+                isValid = false;
+            }
+
+            if (isValid) {
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#5D87FF',
+                    cancelButtonColor: '#49BEFF',
+                    confirmButtonText: 'Ya',
+                    cancelButtonText: 'Tidak',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: 'Loading...',
+                            text: 'Please wait while we are updating the data.',
+                            allowOutsideClick: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+
+                        $.ajax({
+                            url: 'https://a76e-180-242-194-107.ngrok-free.app/api/form/store',
+                            method: 'POST',
+                            data: formData,
+                            success: function (response) {
+                                Swal.close();
+                                if (response.status) {
+                                    Swal.fire({
+                                        title: 'Berhasil!',
+                                        text: 'Data berhasil ditambahkan.',
+                                        icon: 'success',
+                                        confirmButtonColor: '#5D87FF',
+                                        confirmButtonText: 'OK'
+                                    }).then(() => {
+                                        location.reload();
+                                    });
+                                } else {
+                                    Swal.fire("Error", response.message, "error");
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                Swal.close();
+                                Swal.fire("Error", "Terjadi kesalahan saat mengirim data.", "error");
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#NoRek, #Wa').on('input', function () {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+
+</html>

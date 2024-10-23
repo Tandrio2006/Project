@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Http;
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use Mews\Captcha\Facades\Captcha;
 use Validator;
 use Illuminate\Support\Facades\Log;
 class FormController extends Controller
@@ -22,25 +22,27 @@ class FormController extends Controller
             'data' => $data
         ], 200);
     }
-    public function reloadCaptcha()
-    {
-        $captcha = captcha_img('mini');
-        session(['captcha' => $captcha]);
-        return response()->json(['captcha' => $captcha]);
-
-    }
-
 
     public function store(Request $request)
     {
-        if (!captcha_check($request->input('captcha'))) {
-            Log::warning('Captcha validation failed.', [
-                'input' => $request->input('captcha'),
-                'session_captcha' => session('captcha')
-            ]);
-            return response()->json(['success' => false, 'message' => 'Captcha yang Anda masukkan tidak valid atau Mohon di refresh captcha.']);
-        }
+        $recaptchaSecret = '6LfXbmkqAAAAACAaA0bWAP5s3lNeeTrKN5YkJ8XB'; 
+        $response = $request->input('captcha');
+        $remoteIp = $request->ip();
 
+        $verifyResponse = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => $recaptchaSecret,
+            'response' => $response,
+            'remoteip' => $remoteIp,
+        ]);
+
+        $responseData = json_decode($verifyResponse->getBody());
+
+        if (!$responseData->success) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Verifikasi CAPTCHA gagal.',
+            ], 400);
+        }
 
         $validate = [
             'Username' => 'required|string|max:255',
@@ -61,14 +63,14 @@ class FormController extends Controller
                 'data' => $validator->errors()
             ]);
         }
-
+       
         $Customer = new Customer;
         $Customer->Username = $request->Username;
         $Customer->Email = $request->Email;
         $Customer->Wa = $request->Wa;
-        $Customer->Bank = $request->Bank ?? null;  
-        $Customer->NamaRek = $request->NamaRek ?? null;
-        $Customer->NoRek = $request->NoRek ?? null;
+        $Customer->Bank = $request->Bank;
+        $Customer->NamaRek = $request->NamaRek;
+        $Customer->NoRek = $request->NoRek;
 
         if ($Customer->save()) {
             Log::info('Customer created successfully.', ['customer_id' => $Customer->id]);

@@ -31,7 +31,6 @@ class FormController extends Controller
             'Bank' => 'required|string|max:255',
             'NamaRek' => 'required|string|max:255',
             'NoRek' => 'required|string|max:255',
-            'captcha' => 'required|string',
         ];
 
         $validator = Validator::make($request->all(), $validate);

@@ -19,7 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware(['web'])->group(function () {
-    Route::get('/form/indexform', [FormController::class, 'index']);
-    Route::post('/form/store',[FormController::class,'store']);
-});
+Route::get('/form/indexform', [FormController::class, 'index']);
+Route::post('/form/store',[FormController::class,'store']);

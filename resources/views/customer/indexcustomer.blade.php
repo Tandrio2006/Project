@@ -720,7 +720,7 @@
             error: function () {
               Swal.close();
               Swal.fire("Error", "Terjadi kesalahan, coba lagi nanti", "error");
-            }
+          }
           });
         }
       });
